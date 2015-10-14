@@ -5,7 +5,7 @@ All materials you will need to complete Acrobotic's tutorials for the ESP826. Th
 
 For more details, check out the tutorial page at:
 
-   * https://acrobotic.com/tutorials/post/esp8266-getting-started
+   * http://learn.acrobotic.com/tutorials/post/esp8266-getting-started
 
 Modified by S.Parada for ACROBOTIC Industries.  Please consider buying products from us to 
 help fund future Open-Source projects like this! We’ll always put our best 
