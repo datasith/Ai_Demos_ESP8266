@@ -20,17 +20,17 @@ const int sleepTimeS = 20;// Time to sleep (in seconds):
 long lastReadingTime = 0;
 WiFiClient client;
 char results[4];
-String idvariable1 = "561ead47762542699b0e25bc";
-String idvariable2 = "562922e57625425ae7d8a5a6";
-String token = "wk0NWnXoKEEUZPjmXpiNq1lYm5WxvnWFn57ZgojpM9nnyNQJcAC2b9asUkxx";
+String idvariable1 = "------your_temperature_variableID_here--------";
+String idvariable2 = "------your_humidity_variableID_here----------";
+String token = "---------your_token_goes_here------------";
 
 //////////////////////////////////////////////////////////////////////////////////
 
 void setup(){
 
   pinMode(errorPin, OUTPUT);
-  const char* ssid = "AcroboticGuest";
-  const char* password = "13meetup37";
+  const char* ssid = "YourRouterName";
+  const char* password = "YourRouterPassword";
 
   for (int i=0;i<4; i++){   // let know we are working
     digitalWrite(errorPin ,HIGH);
