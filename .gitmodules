@@ -1,0 +1,3 @@
+[submodule "iot_weather_station/lib/Adafruit_DHT_Library"]
+	path = iot_weather_station/lib/Adafruit_DHT_Library
+	url = git://github.com/adafruit/DHT-sensor-library
