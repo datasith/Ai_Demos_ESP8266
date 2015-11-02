@@ -25,12 +25,12 @@ char results[4];
 // After creating an account on Ubidots, you'll be able to setup variables where you 
 // will store the data. In order to post the measurements to the Ubidots variables,
 // we need their "IDs", which are given on the website
-String idvariable1 = "------your_temperature_variableID_here--------";
-String idvariable2 = "------your_humidity_variableID_here----------";
+String idvariable1 = "Your Temperature Variable (Sources > Data Source)";
+String idvariable2 = "Your Humidity Variable (Sources > Data Source)";
 
 // In addition, we'll need the API token, which is what prevents other users
 // Ubidots to publish their data to one of your variables
-String token = "---------your_token_goes_here------------";
+String token = "Your Token (My Profile > API Keys)";
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -38,8 +38,8 @@ String token = "---------your_token_goes_here------------";
 void setup()
 {
   pinMode(errorPin, OUTPUT); // sets pin as an output to drive an LED for status indication
-  const char* ssid = "YourWi-FiName";
-  const char* password = "YourWi-FirPassword";
+  const char* ssid = "Your Wi-Fi Name";
+  const char* password = "Your Wi-Fi Password";
   // The following loop flashes the LED four times to indicate we're inside the setup function
   for (int i=0;i<4; i++)
   {
@@ -50,7 +50,7 @@ void setup()
   }
 
   // Create an instance of the server and specify the port to listen on as an argument
-  Wi-FiServer server(80);
+  WiFiServer server(80);
 
   // Initialize Serial (USB) communication, which will be used for sending debugging messages
   // to the computer
@@ -69,7 +69,7 @@ void setup()
 
   // Use the scanNetworks method inside the Wi-Fi class to scan for any available Wi-Fi networks
   // nearby. If none are found, go to sleep
-  int n = Wi-Fi.scanNetworks();
+  int n = WiFi.scanNetworks();
 
   Serial.println("scan done"); 
   if (n == 0){
@@ -79,10 +79,10 @@ void setup()
   }
 
   // If networks are found, attempt to connect to our Wi-Fi network
-  Wi-Fi.begin(ssid, password);
+  WiFi.begin(ssid, password);
 
   // While the connection is not established, IDLE inside this while loop
-  while (Wi-Fi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
@@ -95,7 +95,7 @@ void setup()
   server.begin();
   
   Serial.println("Wi-Fi Server started");
-  Serial.println(Wi-Fi.localIP());
+  Serial.println(WiFi.localIP());
 }
 
 ////////////////////////////////////////////////////////////////////////////////
