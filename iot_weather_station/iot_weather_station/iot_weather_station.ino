@@ -9,7 +9,7 @@
 #include <DHT.h>
 #include <ESP8266WiFi.h>
 
-#define errorPin 13
+#define errorPin 16
 #define DHTPIN D2
 #define DHTTYPE DHT22
 
@@ -25,12 +25,16 @@ char results[4];
 // After creating an account on Ubidots, you'll be able to setup variables where you 
 // will store the data. In order to post the measurements to the Ubidots variables,
 // we need their "IDs", which are given on the website
-String idvariable1 = "Your Temperature Variable (Sources > Data Source)";
-String idvariable2 = "Your Humidity Variable (Sources > Data Source)";
+String idvariable1 = "------your_temperature_variableID--------";
+String idvariable2 = "------your_humidity_variableID----------";
 
 // In addition, we'll need the API token, which is what prevents other users
 // Ubidots to publish their data to one of your variables
-String token = "Your Token (My Profile > API Keys)";
+String token = "---------your_access_token------------";
+
+// We'll also initialize the values for our Wi-Fi network
+const char* ssid = "your_WiFi_SSID";
+const char* password = "your_WiFi_psassword";
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -38,8 +42,6 @@ String token = "Your Token (My Profile > API Keys)";
 void setup()
 {
   pinMode(errorPin, OUTPUT); // sets pin as an output to drive an LED for status indication
-  const char* ssid = "Your Wi-Fi Name";
-  const char* password = "Your Wi-Fi Password";
   // The following loop flashes the LED four times to indicate we're inside the setup function
   for (int i=0;i<4; i++)
   {
@@ -49,19 +51,16 @@ void setup()
     delay(200);
   }
 
-  // Create an instance of the server and specify the port to listen on as an argument
-  WiFiServer server(80);
-
   // Initialize Serial (USB) communication, which will be used for sending debugging messages
   // to the computer
   Serial.begin(115200);
   
   // Start the communication with the DHT sensor by callibg the begin method of the dht object:W
   dht.begin();
-  // Manual delay while the communication is started
+  // Manual delay while the communication with the sensor starts
   delay(10);
 
-  // Debug messsages to indicate we're about to connect to the netowrk
+  // Debug messsages to indicate we're about to connect to the network
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
@@ -91,11 +90,6 @@ void setup()
   Serial.println("");
   Serial.println("Wi-Fi connected");
 
-  // And then start the server
-  server.begin();
-  
-  Serial.println("Wi-Fi Server started");
-  Serial.println(WiFi.localIP());
 }
 
 ////////////////////////////////////////////////////////////////////////////////
