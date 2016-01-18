@@ -10,7 +10,7 @@
 #include <ESP8266WiFi.h>
 
 #define errorPin 16
-#define DHTPIN D2
+#define DHTPIN 2
 #define DHTTYPE DHT22
 
 // Instantiates and initializes the dht object
@@ -37,6 +37,8 @@ const char* ssid = "your_WiFi_SSID";
 const char* password = "your_WiFi_psassword";
 
 //////////////////////////////////////////////////////////////////////////////////
+// Function Prototypes
+void ubiSave_value(String, String);
 
 // The setup function is executed once by the ESP8266 when it's powered up or reset
 void setup()
