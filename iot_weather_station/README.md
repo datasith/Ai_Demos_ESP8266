@@ -1,4 +1,4 @@
-# Ai_Demos_ESP8266
+# iot_weather_station
 
 Example code for using the ESP8266 Development Board and a DHT-22 Temperature
 and Humidity sensor for building a web-connected weather station.  We set up a
