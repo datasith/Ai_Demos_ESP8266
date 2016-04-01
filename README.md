@@ -14,7 +14,9 @@ products from us to help fund future Open-Source projects like this! We'll
 always put our best effort in every project, and release all our design 
 files and code for you to use. 
 
-    * https://acrobotic.com
+Visit our online shop, which is located at:
+
+   * https://acrobotic.com/
 
 ## License
 
