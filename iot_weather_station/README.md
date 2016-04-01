@@ -19,6 +19,11 @@ Visit our online shop, which is located at:
 
    * https://acrobotic.com/
 
+## Installation
+
+Please follow the instructions outlined in the tutorial linked above.  The steps
+describe how to install the library needed for the programs to run properly.
+
 ## License
 
 Released under the MIT license. Please check LICENSE.txt for more information. 

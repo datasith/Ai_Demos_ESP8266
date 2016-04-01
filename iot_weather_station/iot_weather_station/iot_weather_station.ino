@@ -10,7 +10,7 @@
 #include <ESP8266WiFi.h>
 
 #define errorPin 16
-#define DHTPIN 2
+#define DHTPIN D2
 #define DHTTYPE DHT22
 
 // Instantiates and initializes the dht object
