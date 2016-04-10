@@ -1,4 +1,4 @@
-# iot_weather_station
+# i2c_oled
 
 Example code for using the ESP8266 Development Board and an OLED display for
 visualizing different things on its 128×64 pixel screen.
