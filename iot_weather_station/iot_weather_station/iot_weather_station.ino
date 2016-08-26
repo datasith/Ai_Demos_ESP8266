@@ -33,7 +33,7 @@ String token = "---------your_access_token------------";
 
 // We'll also initialize the values for our Wi-Fi network
 const char* ssid = "your_WiFi_SSID";
-const char* password = "your_WiFi_psassword";
+const char* password = "your_WiFi_password";
 
 //////////////////////////////////////////////////////////////////////////////////
 // Function Prototypes
