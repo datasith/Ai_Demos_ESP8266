@@ -20,7 +20,6 @@ DHT dht(DHTPIN, DHTTYPE);
 const int sleepTimeS = 20;  // Time to sleep (in seconds) between posts to Ubidots
 long lastReadingTime = 0;
 WiFiClient client;
-char results[4];
 
 // After creating an account on Ubidots, you'll be able to setup variables where you 
 // will store the data. In order to post the measurements to the Ubidots variables,
