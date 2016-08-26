@@ -126,9 +126,9 @@ void ubiSave_value(String idvariable, String value) {
 
   // Prepare the value that we're to send to Ubidots and get the length of the entire string
   // that's being sent
-  int num=0;
-  String var = "{\"value\": " + String(value)+"}"; // We'll pass the data in JSON format
-  num = var.length();
+  
+  String var = "{\"value\": " + value +"}"; // We'll pass the data in JSON format
+  String length = var.length();
 
   // If we get a proper connection to the Ubidots API
   if (client.connect("things.ubidots.com", 80)) {
@@ -143,11 +143,11 @@ void ubiSave_value(String idvariable, String value) {
     client.println("Content-Type: application/json");
     Serial.println("Content-Type: application/json");
     // Specify the content length
-    client.println("Content-Length: "+String(num));
-    Serial.println("Content-Length: "+String(num));
+    client.println("Content-Length: "+ length);
+    Serial.println("Content-Length: "+ length);
     // Use our own API token so that we can actually publish the data
-    client.println("X-Auth-Token: "+token);
-    Serial.println("X-Auth-Token: "+token);
+    client.println("X-Auth-Token: "+ token);
+    Serial.println("X-Auth-Token: "+ token);
     // Specify the host
     client.println("Host: things.ubidots.com\n");
     Serial.println("Host: things.ubidots.com\n");
