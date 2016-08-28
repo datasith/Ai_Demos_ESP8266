@@ -10,8 +10,8 @@
 // Define and initialize constants and variables that we'll use later in the code
 WiFiClientSecure client;
 
-const char* ssid = "AcroboticGuest";
-const char* password = "13meetup37";
+const char* ssid = "wifi_network_name";
+const char* password = "wifi_network_password";
 
 //////////////////////////////////////////////////////////////////////////////////
 // Function Prototypes
@@ -24,9 +24,9 @@ const char* IFTTTServer = "maker.ifttt.com";
 // IFTTT https por:
 const int httpsPort = 443;
 // IFTTT Event:
-const String MakerIFTTT_Event = "esp8266_test_email";
+const String MakerIFTTT_Event = "maker_channel_event";
 // IFTTT private key:
-const String MakerIFTTT_Key = "c7TPwGUSGbnRegq04rdMDX";
+const String MakerIFTTT_Key = "maker_channel_key";
 
 String httpHeader = "POST /trigger/"+MakerIFTTT_Event+"/with/key/"+MakerIFTTT_Key+" HTTP/1.1\r\n"+
                     "Host: "+IFTTTServer+"\r\n" + 
