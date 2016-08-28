@@ -161,20 +161,19 @@ void ubiSave_value(String variable_id, String value)
     // If we can't establish a connection to the server:
     Serial.println("Ubidots connection failed...");
   }
-  // If we've lost the connection to Wi-Fi
-  if (!client.connected())
-  {
-    Serial.println("Not Connected");
-    Serial.println("Disconnecting from Ubidots...");
-    client.stop();
-    // do nothing forevermore:
-    for(;;);
-  }
+  
   // If our connection to Ubidots is healthy, read the response from Ubidots
   // and print it to our Serial Monitor for debugging!
   while (client.available())
   {
     char c = client.read();
     Serial.print(c);
+  }
+  
+  // Done with this iteration, close the connection.
+  if (client.connected())
+  {
+    Serial.println("Disconnecting from Ubidots...");
+    client.stop();
   }
 }
