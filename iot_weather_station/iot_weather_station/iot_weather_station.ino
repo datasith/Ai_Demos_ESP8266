@@ -17,23 +17,22 @@
 DHT dht(DHTPIN, DHTTYPE);
 
 // Define and initialize constants and variables that we'll use later in the code
-const int sleepTimeS = 20;  // Time to sleep (in seconds) between posts to Ubidots
-long lastReadingTime = 0;
+const int sleep_time = 20;  // Time to sleep (in seconds) between posts to Ubidots
 WiFiClient client;
 
 // After creating an account on Ubidots, you'll be able to setup variables where you 
 // will store the data. In order to post the measurements to the Ubidots variables,
 // we need their "IDs", which are given on the website
-String idvariable1 = "------your_temperature_variableID--------";
-String idvariable2 = "------your_humidity_variableID----------";
+String variable_id1 = "variableId_temperature";
+String variable_id2 = "variableId_humidity";
 
 // In addition, we'll need the API token, which is what prevents other users
 // Ubidots to publish their data to one of your variables
-String token = "---------your_access_token------------";
+String token = "access_token";
 
 // We'll also initialize the values for our Wi-Fi network
-const char* ssid = "your_WiFi_SSID";
-const char* password = "your_WiFi_password";
+const char* ssid = "wifi_network_name";
+const char* password = "wifi_network_password";
 
 //////////////////////////////////////////////////////////////////////////////////
 // Function Prototypes
@@ -72,17 +71,19 @@ void setup()
   int n = WiFi.scanNetworks();
 
   Serial.println("scan done"); 
-  if (n == 0){
+  if (n == 0)
+  {
     Serial.println("no networks found");
     Serial.println("Going into sleep");
-// ESP.deepSleep(sleepTimeS * 1000000);
+// ESP.deepSleep(sleep_time * 1000000);
   }
 
   // If networks are found, attempt to connect to our Wi-Fi network
   WiFi.begin(ssid, password);
 
   // While the connection is not established, IDLE inside this while loop
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(500);
     Serial.print(".");
   }
@@ -90,20 +91,20 @@ void setup()
   // Once the connection to our Wi-Fi netowrk is successful, print some debug messages
   Serial.println("");
   Serial.println("Wi-Fi connected");
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-
-void loop(){
+// Main code
+void loop()
+{
   // Read the current temperature and humidity measured by the sensor
   float temp = dht.readTemperature(true);
   float hum = dht.readHumidity();
 
   // Call our user-defined function ubiSave_value (defined below), and pass it both the 
   // measurements as well as the corresponding Ubidots variable IDs
-  ubiSave_value(String(idvariable1), String(temp));
-  ubiSave_value(String(idvariable2), String(hum));
+  ubiSave_value(String(variable_id1), String(temp));
+  ubiSave_value(String(variable_id2), String(hum));
 
   // Send some debug messages over USB
   Serial.println("Ubidots data");
@@ -112,33 +113,33 @@ void loop(){
   Serial.println(" Going to Sleep for a while !" );
 
   // deepSleep time is defined in microseconds. Multiply seconds by 1e6
-  //ESP.deepSleep(sleepTimeS * 1000000);//one or other
+  //ESP.deepSleep(sleep_time * 1000000);//one or other
   
   // Wait a few seconds before publishing additional data to avoid saturating the system
-  delay(20000);  
+  delay(sleep_time*1000);  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-
+// User-defined functions
 // We encapsulate the grunt work for publishing temperature and humidty values to Ubidots
 // inside the function ubiSave_value
-void ubiSave_value(String idvariable, String value) {
-
+void ubiSave_value(String variable_id, String value)
+{
   // Prepare the value that we're to send to Ubidots and get the length of the entire string
   // that's being sent
-  
   String var = "{\"value\": " + value +"}"; // We'll pass the data in JSON format
-  String length = var.length();
+  String length = String(var.length());
 
   // If we get a proper connection to the Ubidots API
-  if (client.connect("things.ubidots.com", 80)) {
-    Serial.println("connected ubidots");
+  if (client.connect("things.ubidots.com", 80))
+  {
+    Serial.println("Connected to Ubidots...");
     delay(100);
 
     // Construct the POST request that we'd like to issue
-    client.println("POST /api/v1.6/variables/"+idvariable+"/values HTTP/1.1");
+    client.println("POST /api/v1.6/variables/"+variable_id+"/values HTTP/1.1");
     // We also use the Serial terminal to show how the POST request looks like
-    Serial.println("POST /api/v1.6/variables/"+idvariable+"/values HTTP/1.1");
+    Serial.println("POST /api/v1.6/variables/"+variable_id+"/values HTTP/1.1");
     // Specify the contect type so it matches the format of the data (JSON)
     client.println("Content-Type: application/json");
     Serial.println("Content-Type: application/json");
@@ -155,21 +156,24 @@ void ubiSave_value(String idvariable, String value) {
     client.print(var);
     Serial.print(var+"\n");
   }
-  else {
+  else
+  {
     // If we can't establish a connection to the server:
-    Serial.println("Ubidots connection failed");
+    Serial.println("Ubidots connection failed...");
   }
   // If we've lost the connection to Wi-Fi
-  if (!client.connected()) {
-    Serial.println("NotConnected");
-    Serial.println("disconnecting ubidots.");
+  if (!client.connected())
+  {
+    Serial.println("Not Connected");
+    Serial.println("Disconnecting from Ubidots...");
     client.stop();
     // do nothing forevermore:
     for(;;);
   }
   // If our connection to Ubidots is healthy, read the response from Ubidots
   // and print it to our Serial Monitor for debugging!
-  if (client.available()) {
+  while (client.available())
+  {
     char c = client.read();
     Serial.print(c);
   }
