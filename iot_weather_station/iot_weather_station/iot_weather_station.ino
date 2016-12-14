@@ -55,7 +55,7 @@ void setup()
   // to the computer
   Serial.begin(115200);
   
-  // Start the communication with the DHT sensor by callibg the begin method of the dht object:W
+  // Start the communication with the DHT sensor by callibg the begin method of the dht object
   dht.begin();
   // Manual delay while the communication with the sensor starts
   delay(10);

@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -X POST -d '{message:"Hello World"}' http://ipaddress/process
