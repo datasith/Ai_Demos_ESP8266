@@ -1,14 +1,15 @@
-# iot_weather_station
+# dht_dataviz_ubidots
 
-Example code for using the ESP8266 Development Board and a DHT-22 Temperature
-and Humidity sensor for building a web-connected weather station.  We set up a
-widget on ubidots.com for uploading and visualizing the data collected.
+Example code for using the ESP8266 Development Board and a DHT-11 Temperature
+and Humidity sensor to post and visualize data on the web through the free
+service Ubidots (ubidots.com).  We use the site's built-in widgets to plot 
+timeseries of the sensor data collected.
 
 ## Description
 
 For more details, check out the tutorial page at:
 
-   * http://learn.acrobotic.com/tutorials/post/esp8266-iot-weather-station
+   * http://learn.acrobotic.com/tutorials/post/esp8266-visualizing-temperature-humidity-ubidots
 
 Developed by S.Parada for ACROBOTIC Industries.  Please consider buying 
 products from us to help fund future Open-Source projects like this! We'll

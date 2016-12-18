@@ -5,9 +5,9 @@ mechanical components.
 
 ## Description
 
-For more details, check out the tutorial page at:
+For more details, check out the tutorial pages at:
 
-    * http://learn.acrobotic.com/tutorials/post/esp8266-iot-weather-station
+    * http://learn.acrobotic.com/tutorials/post/esp8266-visualizing-temperature-humidity-ubidots
     * http://learn.acrobotic.com/tutorials/post/esp8266-oled-display-using-i2c
 
 Developed by S.Parada for ACROBOTIC Industries.  Please consider buying 
