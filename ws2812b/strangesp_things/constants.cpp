@@ -2,8 +2,8 @@
 namespace constants 
 {
   // Replace with your network credentials
-  const char* ssid = "AcroboticGuest";
-  const char* password = "13meetup37";
+  const char* ssid = "YOUR_SSID";
+  const char* password = "YOUR_PASSWORD";
 
   const char webpage[] PROGMEM = R"=====(
     <html>

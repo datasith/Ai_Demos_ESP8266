@@ -10,8 +10,8 @@
 // Define and initialize constants and variables that we'll use later in the code
 WiFiClientSecure client;
 
-const char* ssid = "wifi_network_name";
-const char* password = "wifi_network_password";
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
 
 //////////////////////////////////////////////////////////////////////////////////
 // Function Prototypes

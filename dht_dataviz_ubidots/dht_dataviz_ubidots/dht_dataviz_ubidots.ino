@@ -31,8 +31,8 @@ String variable_id2 = "variableId_humidity";
 String token = "access_token";
 
 // We'll also initialize the values for our Wi-Fi network
-const char* ssid = "wifi_network_name";
-const char* password = "wifi_network_password";
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
 
 //////////////////////////////////////////////////////////////////////////////////
 // Function Prototypes
