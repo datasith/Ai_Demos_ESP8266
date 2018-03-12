@@ -6,8 +6,8 @@
   File: simple_btc_coinmarketcap.ino
   ------------------------------------------------------------------------------
   Description: 
-  Code for YouTube video demonstrating how to use the Coindesk API to fetch the 
-  current price of Bitcoin:
+  Code for YouTube video demonstrating how to use the Coinmarketcap API to fetch 
+  the current price of Bitcoin:
   https://youtube.com/acrobotic
   ------------------------------------------------------------------------------
   Please consider buying products from ACROBOTIC to help fund future
