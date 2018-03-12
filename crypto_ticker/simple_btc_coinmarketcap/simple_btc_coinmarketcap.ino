@@ -20,7 +20,6 @@
 ------------------------------------------------------------------------------*/
 #include <ESP8266WiFi.h>
 #include <ArduinoJson.h>
-#include <Wire.h>
 
 const char* ssid     = "YOUR_SSID";
 const char* password = "YOUR_PASSWORD";
