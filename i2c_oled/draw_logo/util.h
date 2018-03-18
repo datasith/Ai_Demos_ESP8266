@@ -1,6 +1,5 @@
 #define CMD_DISPLAY_OFF     0xAE
 #define CMD_DISPLAY_ON      0xAF 
-#define CMD_DISPLAY_NORMAL  0xA6
 #define I2C_ADDRESS         0x3C
 #define CMD_MODE_COMMAND    0x80 
 #define CMD_MODE_DATA       0x40

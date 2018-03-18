@@ -33,11 +33,11 @@ void sendCommand(unsigned char command)
 
 void displayInit()
 {
-  sendCommand(CMD_DISPLAY_OFF);         // display off
-  delay(5);
-  sendCommand(CMD_DISPLAY_ON);          // display on
-  delay(5);
-  sendCommand(CMD_DISPLAY_NORMAL);  // display can be either normal on inverse
+  sendCommand(CMD_DISPLAY_OFF); //DISPLAYOFF
+  sendCommand(0x8D);            //CHARGEPUMP Charge pump setting
+  sendCommand(0x14);            //CHARGEPUMP Charge pump enable
+  sendCommand(0xA1);            //SEGREMAP   Mirror screen horizontally (A0)
+  sendCommand(0xC8);            //COMSCANDEC Rotate screen vertically (C0)
 }
 
 void setTextXY(unsigned char row, unsigned char col)
