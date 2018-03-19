@@ -109,7 +109,7 @@ void getData()
   client.stop();
   char * json = strchr(respBuffer,'{');
   String json_str = String(json);
-  
+
   ///////////////////////////////////////////
   // The Response Buffer currently (03.11.18)
   // contains a stray 'd' character that
