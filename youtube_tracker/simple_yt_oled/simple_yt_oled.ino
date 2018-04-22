@@ -3,11 +3,11 @@
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: simple_btc_oled.ino
+  File: simple_yt_oled.ino
   ------------------------------------------------------------------------------
   Description: 
-  Code for YouTube video demonstrating how to use the Coindesk API to fetch the 
-  current price of Bitcoin an display it on a 0.96" OLED over I2C:
+  Code for YouTube video demonstrating how to use the YouTube Data API to fetch
+  the current stats of a specific channel:
   https://youtube.com/acrobotic
   ------------------------------------------------------------------------------
   Please consider buying products from ACROBOTIC to help fund future
@@ -26,18 +26,20 @@
 const char* ssid     = "YOUR_SSID";
 const char* password = "YOUR_PASSWORD";
 
-#define CD_API "/v1/bpi/currentprice.json"
-#define CD_URL "api.coindesk.com"
+#define YT_API_KEY "YOUR_YT_API_KEY"
+// Change to the channel id you want to track
+#define YT_CHANNEL_ID "UCqk4hT4XpzUVVUfsIDNzvPw" 
+#define YT_URL "www.googleapis.com"
 
+WiFiClientSecure client;
+const char* fingerprint = "EF 9D 44 BA 1A 91 4C 42 06 B1 6A 25 71 26 58 61 BA DA FA B9";
 static char respBuffer[4096];
-
-WiFiClient client;
 
 void setup()
 {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
-
+  
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
@@ -51,16 +53,16 @@ void setup()
     Serial.print(".");
   }
 
-  Serial.println("");
-  Serial.println("WiFi connected");  
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-
   Wire.begin();  
   displayInit();                // initialze OLED display
   displayClear();               // clear the display
   setTextXY(0,0);               // Set the cursor position to 0th page (row), 0th column
-  displayString("BTC/USD:");
+  displayString("DATA:");  
+
+  Serial.println("");
+  Serial.println("WiFi connected");  
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
 }
 
 String data;
@@ -68,30 +70,33 @@ String data;
 void loop()
 {
   getData();
-  printData(data);
+  printData(data);  
   delay(10000);
 }
 
 void getData()
 {
   const char request[] = 
-    "GET " CD_API " HTTP/1.1\r\n"
+    "GET /youtube/v3/channels?part=statistics&id=" YT_CHANNEL_ID "&key=" YT_API_KEY " HTTP/1.1\r\n"
     "User-Agent: ESP8266/0.1\r\n"
     "Accept: */*\r\n"
-    "Host: " CD_URL "\r\n"
+    "Host: " YT_URL "\r\n"
     "Connection: close\r\n"
-    "\r\n";    
-  Serial.print("Requesting URL: ");
-  Serial.println(CD_URL);
-  
-  delay(100);
-  
-  if (!client.connect(CD_URL, 80))
+    "\r\n";
+  Serial.println(request);
+  if (!client.connect(YT_URL, 443))
   {
     Serial.println("Connection failed");
     return;
   }
-
+  
+  // Unsure why verification isn't working.
+//  if (client.verify(fingerprint, YT_URL)) {
+//    Serial.println("Certificate matches");
+//  } else {
+//    Serial.println("Certificate doesn't match!");
+//  }
+  
   client.print(request);
   client.flush();
   delay(1000);
@@ -106,42 +111,20 @@ void getData()
     }
   }
   client.stop();
+//  Serial.print(respBuffer);
+  
   char * json = strchr(respBuffer,'{');
-  String json_str = String(json);
-  
-  ///////////////////////////////////////////
-  // The Response Buffer currently (03.11.18)
-  // contains a stray 'd' character that
-  // corrupts the data. This removes it, but
-  // shouldn't be necessary when the issue is 
-  // fixed!
-  uint16_t idx_d = json_str.lastIndexOf('d');
-  json_str.remove(idx_d,3);
-  ///////////////////////////////////////////
-  
-  Serial.println(json_str);
-  
+
   DynamicJsonBuffer jBuffer;
-  JsonObject& root = jBuffer.parseObject(json_str);
-
-  Serial.println("JsonObject: ");
-  root.prettyPrintTo(Serial);
-  Serial.println();
-
-  JsonObject& bpi = root["bpi"];
-  JsonObject& usd = bpi["USD"];
-  String tmp = usd["rate_float"];
-  data = tmp;
-  Serial.print("BTC (USD): $");
+  JsonObject& root = jBuffer.parseObject(json);
+  String subscriberCount = root["items"][0]["statistics"]["subscriberCount"];
+  data = "Subs: "+subscriberCount;
   Serial.println(data);
 }
 
 void printData(String data)
 {
   setTextXY(2,0);
-  displayString("$");
-
-  setTextXY(2,1);
   char __data[sizeof(data)];
   data.toCharArray(__data, sizeof(__data));
   displayString(__data);
