@@ -18,6 +18,7 @@ files and code for you to use.
 Visit our online shop, which is located at:
 
    * https://acrobotic.com/
+   * https://amazon.com/acrobotic   
 
 ## License
 
