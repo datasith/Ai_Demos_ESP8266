@@ -36,8 +36,8 @@ Ticker timer;
 Adafruit_BMP085 bmp;
 
 // Connecting to the Internet
-char * ssid = "BEARS";
-char * password = "tenonezero";
+char * ssid = "YOUR_SSID";
+char * password = "YOUR_PASSWORD";
 
 // Running a web server
 ESP8266WebServer server;
