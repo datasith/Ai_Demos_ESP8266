@@ -7,8 +7,8 @@
   ------------------------------------------------------------------------------
   Description: 
   Code for YouTube video demonstrating how to plot sensor data from a BMP180 tem-
-  perature, humidity, and barometric pressure sensor. A web server running on the 
-  ESP8266 serves a web page that uses Chart.js and websockets to plot the data.
+  perature, and barometric pressure sensor. A web server running on the ESP8266 
+  serves a web page that uses Chart.js and websockets to plot the data.
   https://youtu.be/lEVoRJSsEa8
 
   Do you like my videos? You can support the channel:
