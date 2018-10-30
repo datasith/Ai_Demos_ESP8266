@@ -1,0 +1,38 @@
+<html>
+<body>
+	<div>
+		<!-- Get the desired color of an LED -->
+		<fieldset>
+			<legend>Choose wisely!</legend>
+			<div>
+				<input type="color" id="led-color" value="#000000" oninput="sendrgb()" />
+				<label for="led-color">LED Color</label>
+			</div>
+		</fieldset>
+	</div>
+	<script type="text/javascript">
+		// Setting up the websocket (client-side)
+		var webSocket;
+		webSocket = new WebSocket('ws://'+window.location.hostname + ':80/subscribe');
+		webSocket.onmessage = function(event) { onMessage(event); }
+
+		// User-defined functions
+		function hexToRgb(hex) {
+			var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+			return result ? {
+				r: parseInt(result[1], 16),
+				g: parseInt(result[2], 16),
+				b: parseInt(result[3], 16)
+			} : null;
+		}
+		function sendrgb() {
+			var hex = document.getElementById('led-color').value;
+			var rgb = hexToRgb(hex);
+			webSocket.send(JSON.stringify(rgb));
+		}
+		function onMessage(event) {
+			console.log(event.data);
+		}
+	</script>
+</body>
+</html>
