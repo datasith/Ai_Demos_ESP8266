@@ -3,7 +3,7 @@
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: yt_tracker.ino
+  File: wemos_yt_tracker.ino
   ------------------------------------------------------------------------------
   Description: 
   Code for YouTube video where I build a little desktop display to show the 
