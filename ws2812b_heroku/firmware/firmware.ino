@@ -11,7 +11,7 @@
   websockets to get the input from a user—the color of an RGB LED—via a webpage 
   served by the web server. The selected color is sent to the ESP8266, which 
   is setup to act as a client on the websocket.
-  https://youtu.be/mrxgH1vH5NE
+  https://youtu.be/lteGQrY5Yu4
 
   Do you like my videos? You can support the channel:
   https://patreon.com/acrobotic
