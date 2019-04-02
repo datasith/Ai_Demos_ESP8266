@@ -57,8 +57,8 @@ const uint8_t remap[16][16] = {
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(256, D4, NEO_GRB + NEO_KHZ800);
 
 ESP8266WebServer server;
-char* ssid = "YOUR_SSID";
-char* password = "YOUR_PASSWORD";
+char* ssid = "BEARS";
+char* password = "tenonezero";
 
 // hold uploaded file
 fs::File fsUploadFile;
@@ -93,7 +93,7 @@ void setup()
   });
   server.begin();
   pixels.begin();
-  pixels.setBrightness(12);
+  pixels.setBrightness(128);
   pixels.show(); // initializes pixel matrix to off
 }
 
