@@ -22,8 +22,6 @@
   License:
   Please see attached LICENSE.txt file for details.
 ------------------------------------------------------------------------------*/
-
-
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <WiFiClientSecure.h>
