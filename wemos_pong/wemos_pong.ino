@@ -10,7 +10,7 @@
   play, and a couple of push buttons. The sketch demos a basic version of pong
   for the ESP8266. Find the wiring diagram in the sketch directory and the build
   process at:
-  https://youtu.be/PRqCxHZM-OY
+  https://youtu.be/BRQIxeqqmu0
 
   Do you like my videos? You can support the channel:
   https://patreon.com/acrobotic
