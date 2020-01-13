@@ -24,6 +24,7 @@
   License:
   Please see attached LICENSE.txt file for details.
 ------------------------------------------------------------------------------*/
+// curl -F "file=@$PWD/index.html" 192.168.1.XX/upload
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <FS.h>
