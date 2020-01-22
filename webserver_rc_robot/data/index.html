@@ -1,0 +1,55 @@
+<html>
+<!-- Websocket client for controlling ACROBOTIC's wheeled robot PyPi-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
+<body onload="javascript:mc_init()">
+  <div class="container">
+    <div class="row cols-sm-6 col-sm-offset-4">
+      <!-- Adding a slider for controlling speed -->
+      <input type="range" min="0" max="100" value="50" id="speedSlider"
+      oninput="setSpeed()" />
+      <label style="text:center" for="speedSlider" id="speedLabel">Speed:
+      50%</label>
+    </div>
+    <div class="row cols-sm-6 col-sm-offset-4">
+        <button class="primary" id="FWD">FORWARD</button>
+        <button class="primary" id="BWD">BACKWARD</button>
+        <button class="primary" id="LFT">LEFT</button>
+        <button class="primary" id="RGT">RIGHT</button>
+    </div>
+  </div>
+<script
+<script>
+  // Create global scope variables
+	var socket, speed=50;
+  function mc_init() {
+    // Initialiaze the websocket client
+		socket = new WebSocket('ws://' + window.location.hostname + ':81/');
+    var buttons = document.getElementsByTagName('button');
+    for(i=0;i<buttons.length;i++) {
+      buttons[i].addEventListener('mousedown',move,true);
+      buttons[i].addEventListener('mouseup',stop,true);
+      buttons[i].addEventListener('touchstart',move,true);
+      buttons[i].addEventListener('touchend',stop,true);
+    }
+  }
+  function setSpeed() {
+    speed = document.getElementById("speedSlider").value;
+    speed = parseInt(speed).toFixed(0);
+    document.getElementById("speedLabel").innerHTML = "Speed: " + speed + "%";
+    return false;
+  }
+  function move(e) {
+    e.preventDefault(); // prevent copy-paste menu pop-up on mobile!
+    var data = {'direction':e.srcElement.id,'speed':speed};
+	  socket.send(JSON. stringify(data));
+    return false;
+  }
+  function stop() {
+    var data = {'direction':'STP'};
+	  socket.send(JSON. stringify(data));
+    return false;
+  }
+</script>
+</body>
+</html>
