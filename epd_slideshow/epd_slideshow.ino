@@ -3,7 +3,7 @@
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: webserver_epd_slideshow.ino
+  File: epd_slideshow.ino
   ------------------------------------------------------------------------------
   Description: 
 
