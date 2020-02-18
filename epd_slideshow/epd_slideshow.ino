@@ -1,12 +1,16 @@
 /*------------------------------------------------------------------------------
-  03/11/2019
+  01/21/2020
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
   File: epd_slideshow.ino
   ------------------------------------------------------------------------------
   Description: 
-
+  Code for YouTube video demonstrating how to build an e-Paper Display picture 
+  frame controlled by an ESP8266, and use it to display photos that users can
+  drag and drop by accessing a web server running on the ESP8266 using a browser:
+  https://youtu.be/p3jXovhnfCU
+  
   Do you like my videos? You can support the channel:
   https://patreon.com/acrobotic
   https://paypal.me/acrobotic
