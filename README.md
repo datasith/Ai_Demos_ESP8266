@@ -20,7 +20,7 @@ You can also purchase products from my little online shops to help fund future
 Open-Source projects like these! I'll always put my best effort in every project, 
 and release all my design files and code for you to use. 
    * https://acrobotic.com/
-   * https://amazon.com/acrobotic
+   * https://amazon.com/shops/acrobotic
 
 ## License
 
