@@ -1,19 +1,24 @@
 /*------------------------------------------------------------------------------
   03/01/2018
-  Author: Makerbro
+  Author: Cisco • A C R O B O T I C 
   Platforms: ESP8266
   Language: C++/Arduino
   File: simple_btc_coinmarketcap.ino
   ------------------------------------------------------------------------------
   Description: 
   Code for YouTube video demonstrating how to use the Coinmarketcap API to fetch 
-  the current price of Bitcoin:
-  https://youtube.com/acrobotic
+  the current price of Bitcoin.
   ------------------------------------------------------------------------------
-  Please consider buying products from ACROBOTIC to help fund future
-  Open-Source projects like this! We'll always put our best effort in every
-  project, and release all our design files and code for you to use. 
+  Do you like my work? You can support me:
+  https://patreon.com/acrobotic
+  https://paypal.me/acrobotic
+  https://buymeacoff.ee/acrobotic
+  ------------------------------------------------------------------------------
+  Please consider buying products and kits to help fund future Open-Source 
+  projects like this! We'll always put our best effort in every project, and 
+  release all our design files and code for you to use. 
   https://acrobotic.com/
+  https://amazon.com/shops/acrobotic
   ------------------------------------------------------------------------------
   License:
   Please see attached LICENSE.txt file for details.
@@ -122,4 +127,3 @@ void getData()
   Serial.print("BTC (USD): $");
   Serial.println(price_usd);
 }
-

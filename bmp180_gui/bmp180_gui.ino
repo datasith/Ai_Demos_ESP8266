@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
   10/20/2018
-  Author: Makerbro
+  Author: Cisco • A C R O B O T I C 
   Platforms: ESP8266
   Language: C++/Arduino
   File: bmp180_gui.ino
@@ -10,17 +10,17 @@
   perature, and barometric pressure sensor. A web server running on the ESP8266 
   serves a web page that uses Chart.js and websockets to plot the data.
   https://youtu.be/lEVoRJSsEa8
-
-  Do you like my videos? You can support the channel:
+  ------------------------------------------------------------------------------
+  Do you like my work? You can support me:
   https://patreon.com/acrobotic
   https://paypal.me/acrobotic
+  https://buymeacoff.ee/acrobotic
   ------------------------------------------------------------------------------
-  Please consider buying products from ACROBOTIC to help fund future
-  Open-Source projects like this! We'll always put our best effort in every
-  project, and release all our design files and code for you to use. 
-
+  Please consider buying products and kits to help fund future Open-Source 
+  projects like this! We'll always put our best effort in every project, and 
+  release all our design files and code for you to use. 
   https://acrobotic.com/
-  https://amazon.com/acrobotic
+  https://amazon.com/shops/acrobotic
   ------------------------------------------------------------------------------
   License:
   Please see attached LICENSE.txt file for details.
