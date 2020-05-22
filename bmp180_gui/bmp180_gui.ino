@@ -34,6 +34,7 @@
 // Collecting BMP180 sensor data
 Ticker timer;
 Adafruit_BMP085 bmp;
+bool get_data = false;
 
 // Connecting to the Internet
 char * ssid = "YOUR_SSID";
@@ -136,14 +137,18 @@ void loop() {
   // put your main code here, to run repeatedly:
   webSocket.loop();
   server.handleClient();
+  if(get_data){
+    // Serial.println(bmp.readTemperature());
+    String json = "{\"value\":";
+    json += bmp.readTemperature();
+    json += "}";
+    webSocket.broadcastTXT(json.c_str(), json.length());
+    get_data = false;
+  }
 }
 
 void getData() {
-//  Serial.println(bmp.readTemperature());
-  String json = "{\"value\":";
-  json += bmp.readTemperature();
-  json += "}";
-  webSocket.broadcastTXT(json.c_str(), json.length());
+  get_data = true;
 }
 
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length){
